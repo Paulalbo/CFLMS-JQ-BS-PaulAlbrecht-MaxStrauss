@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery animation</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<style>
+		* { padding: 0; margin: 0; }
+		body { font-family: sans-serif; font-size: 100%; margin: 10px; color: #222; background-color: #eee; }
+		#animate { position: absolute; top: 80px; left: 100px; width: 180px; height: 120px; font-size: 2em; text-align: center; line-height: 118px; color: #fff; background-color: #00c; border: 2px solid #006; border-radius: 5px; }
+		ul {margin: 30vh 10vw 0 10vw; font-size: 5em;}
+		input {margin-left: 10vw}
+	</style>
+</head>
+<body>
+
+	<h1>jQuery Animation</h1>
+
+	<div id="animate">ANIMATE</div>
+
+	<ul>
+		<li>remove item1</li>
+		<li>remove item2</li>
+		<li>remove item3</li>
+		<li>remove item4</li>
+		<li>remove item5</li>
+	</ul>
+	<input type="text" value="" /><button>insert</button>
+
+
+
+	<script>
+		var a = $("#animate");
+		a.hide(1).show(2000).delay(5000).hide(2000);
+
+		$(document).ready(function(){
+			$("li").on("click", function (){
+				$(this).remove()
+			})
+
+			$("button").on("click", function() {
+          		var content = $("input").val();
+          		$("li:last-child").after(`<li>${content}</li>`);
+				$("li:last-child").hide(1).slideDown(1000);
+				}) 
+
+		})
+	</script>
+</body>
+</html>
